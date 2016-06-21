@@ -1,3 +1,6 @@
 ApiFlashcards::Engine.routes.draw do
-  root 'api#index'
+  mount ApiFlashcards::Engine => "/api"
+    scope module: 'api_flashcards' do
+      get '/api', to: 'api#index'
+    end
 end

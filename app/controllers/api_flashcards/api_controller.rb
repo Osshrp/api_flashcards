@@ -2,9 +2,19 @@ require_dependency "api_flashcards/application_controller"
 
 module ApiFlashcards
   class ApiController < ApplicationController
-    http_basic_authenticate_with name: "test", password: "test"
-    
+    before_action :authenticate
+
     def index
+      @users = User.all
+    end
+
+    private
+
+    def authenticate
+      if user = authenticate_with_http_basic { |user, password| login(user, password) }
+      else
+        request_http_basic_authentication
+      end
     end
   end
 end
