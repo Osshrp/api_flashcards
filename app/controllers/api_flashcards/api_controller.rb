@@ -12,6 +12,7 @@ module ApiFlashcards
 
     def authenticate
       if user = authenticate_with_http_basic { |user, password| login(user, password) }
+        @current_user = user
       else
         request_http_basic_authentication
       end
