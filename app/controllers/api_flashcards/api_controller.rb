@@ -5,13 +5,14 @@ module ApiFlashcards
     before_action :authenticate
 
     def index
-      @users = User.all
+      # @users = User.all
     end
 
     private
 
     def authenticate
-      if user = authenticate_with_http_basic { |user, password| login(user, password) }
+      # if user = authenticate_with_http_basic { |user, password| login(user, password) }
+      if user = authenticate_with_http_basic { |user, password| user == 'user' && password == 'password' }
         @current_user = user
       else
         request_http_basic_authentication

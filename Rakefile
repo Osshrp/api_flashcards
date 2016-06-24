@@ -44,3 +44,10 @@ RSpec::Core::RakeTask.new(:spec => 'app:db:test:prepare')
 
 task :default => :spec
 
+# task routes: :environment do
+#   app = ENV['ENGINE'] || "Rails.application"
+#   all_routes = ApiFlashcards::Engine.routes.routes
+#   require 'action_dispatch/routing/inspector'
+#   inspector = ActionDispatch::Routing::RoutesInspector.new(all_routes)
+#   puts inspector.format(ActionDispatch::Routing::ConsoleFormatter.new, ENV['CONTROLLER'])
+# end

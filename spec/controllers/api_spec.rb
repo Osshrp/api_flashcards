@@ -5,7 +5,7 @@ module ApiFlashcards
     
     before do
       request.env['HTTP_AUTHORIZATION'] =
-        ActionController::HttpAuthentication::Basic.encode_credentials("user","pw")
+        ActionController::HttpAuthentication::Basic.encode_credentials("user","password")
     end
     describe "Get index" do
       routes { ApiFlashcards::Engine.routes }
