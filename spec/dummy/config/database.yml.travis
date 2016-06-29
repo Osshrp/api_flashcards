@@ -1,0 +1,4 @@
+test:
+  adapter: postgresql
+  database: api_flashcards_test
+  username: postgres
