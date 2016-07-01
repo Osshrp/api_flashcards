@@ -1,5 +1,5 @@
 module ApiFlashcards
-  class ApplicationController < ActionController::Base
+  class ApplicationController < ActionController::Api
     protect_from_forgery with: :exception
     before_action :authenticate
 
