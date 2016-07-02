@@ -1,6 +1,8 @@
+require "rails-api/action_controller/api"
+
 module ApiFlashcards
-  class ApplicationController < ActionController::Api
-    protect_from_forgery with: :exception
+  class ApplicationController < ActionController::API
+    include ActionController::HttpAuthentication::Basic::ControllerMethods
     before_action :authenticate
 
     private
