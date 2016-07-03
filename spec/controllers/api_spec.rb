@@ -1,7 +1,7 @@
 require "rails_helper"
 
-module ApiFlashcards
-  describe ApiController, type: :controller do
+module ApiFlashcards::Api::V1
+  describe CardsController, type: :controller do
     let!(:user) { FactoryGirl.create(:user) }
     before do
       request.env['HTTP_AUTHORIZATION'] =
