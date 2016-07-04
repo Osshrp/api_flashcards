@@ -16,20 +16,19 @@ module ApiFlashcards
         @card = @current_user.cards.pending.first
         @card ||= @current_user.cards.repeating.first
       end
-
-      # respond_to do |format|
-      #   # format.html
-      #   format.json
-      # end
     end
 
     private
 
     def authenticate
-      if user = authenticate_with_http_basic { |user, password| User.authenticate(user, password) }
+      user = authenticate_with_http_basic do |user, password|
+        User.authenticate(user, password)
+      end
+      if user
         @current_user = user
       else
-        request_http_basic_authentication
+        # request_http_basic_authentication
+        render json: { message: 'Authentication failed'}, status: :unauthorized
       end
     end
   end

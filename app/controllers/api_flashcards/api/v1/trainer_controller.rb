@@ -5,11 +5,12 @@ module ApiFlashcards
 
         def index
           find_card params[:id]
-          render json: @card
+          if @card
+            render json: @card, status: 200
+          end
         end
 
         def review_card
-          byebug
           @card = @current_user.cards.find(params[:card_id])
           check_result = @card.check_translation(trainer_params[:user_translation])
         end

@@ -4,15 +4,17 @@ module ApiFlashcards
       class CardsController < ApiFlashcards::ApplicationController
         def index
           @cards = @current_user.cards.all
-          render json: @cards
+          if @cards
+            render json: @cards, status: 200
+          end
         end
 
         def create
-          @card = current_user.cards.build(card_params)
+          @card = @current_user.cards.build(card_params)
           if @card.save
-            render json: @card
+            render json: { message: 'success' }, status: 201
           else
-            render nothing: true
+            render nothing: true, status: 500
           end
         end
 
