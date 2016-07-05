@@ -2,10 +2,9 @@ module ApiFlashcards
   module Api
     module V1
       class CardsController < ApiFlashcards::ApplicationController
-        # Handles a GET request
-        # @param /api/v1/cards
-        # @return [JSON] Users cards
 
+        # Handles a GET request /api/v1/cards
+        # @return [JSON] Users cards
         def index
           @cards = @current_user.cards.all
           if @cards

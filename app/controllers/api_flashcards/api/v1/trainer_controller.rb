@@ -3,6 +3,8 @@ module ApiFlashcards
     module V1
       class TrainerController < ApiFlashcards::ApplicationController
 
+        # Handles a GET request /api/v1/trainer, show card for review
+        # @return [json] card for review
         def index
           find_card params[:id]
           if @card
@@ -10,6 +12,9 @@ module ApiFlashcards
           end
         end
 
+        # PUT request, review card
+        # @param [Json] user_translation, card_id
+        # @return [true, false]
         def review_card
           @card = @current_user.cards.find(params[:card_id])
           check_result = @card.check_translation(trainer_params[:user_translation])

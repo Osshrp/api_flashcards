@@ -162,7 +162,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Handles a GET request.</p>
+<p>Handles a GET request /api/v1/cards.</p>
 </div></span>
   
 </li>
@@ -250,22 +250,20 @@
       <pre class="lines">
 
 
+18
 19
 20
 21
 22
 23
 24
-25
-26
-27</pre>
+25</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/api_flashcards/api/v1/cards_controller.rb', line 19</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/api_flashcards/api/v1/cards_controller.rb', line 18</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_create'>create</span>
   <span class='ivar'>@card</span> <span class='op'>=</span> <span class='ivar'>@current_user</span><span class='period'>.</span><span class='id identifier rubyid_cards'>cards</span><span class='period'>.</span><span class='id identifier rubyid_build'>build</span><span class='lparen'>(</span><span class='id identifier rubyid_card_params'>card_params</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_byebug'>byebug</span>
   <span class='kw'>if</span> <span class='ivar'>@card</span><span class='period'>.</span><span class='id identifier rubyid_save'>save</span>
     <span class='id identifier rubyid_render'>render</span> <span class='label'>json:</span> <span class='lbrace'>{</span> <span class='label'>message:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>success</span><span class='tstring_end'>&#39;</span></span> <span class='rbrace'>}</span><span class='comma'>,</span> <span class='label'>status:</span> <span class='int'>201</span>
   <span class='kw'>else</span>
@@ -289,28 +287,13 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Handles a GET request</p>
+<p>Handles a GET request /api/v1/cards</p>
 
 
   </div>
 </div>
 <div class="tags">
-  <p class="tag_title">Parameters:</p>
-<ul class="param">
   
-    <li>
-      
-        <span class='name'>/api/v1/cards</span>
-      
-      
-        <span class='type'></span>
-      
-      
-      
-    </li>
-  
-</ul>
-
 <p class="tag_title">Returns:</p>
 <ul class="return">
   
@@ -336,15 +319,15 @@
       <pre class="lines">
 
 
+8
 9
 10
 11
 12
-13
-14</pre>
+13</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/api_flashcards/api/v1/cards_controller.rb', line 9</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/api_flashcards/api/v1/cards_controller.rb', line 8</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_index'>index</span>
   <span class='ivar'>@cards</span> <span class='op'>=</span> <span class='ivar'>@current_user</span><span class='period'>.</span><span class='id identifier rubyid_cards'>cards</span><span class='period'>.</span><span class='id identifier rubyid_all'>all</span>
@@ -362,7 +345,7 @@
 </div>
 
       <div id="footer">
-  Generated on Tue Jul  5 14:19:13 2016 by
+  Generated on Tue Jul  5 18:16:21 2016 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.0 (ruby-2.3.0).
 </div>
