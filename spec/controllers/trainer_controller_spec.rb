@@ -26,10 +26,19 @@ module ApiFlashcards::Api::V1
         end
       end
 
-      describe "PUT review_card" do
-        it "check wrong translation" do
-          put :review_card, user_translation: 'vvv', card_id: user.cards.first.id
-          expect(response).to be false
+      describe "PUT review_card with wrong translation" do
+        it "check translation" do
+          put :review_card, user_translation: "vvv", card_id: user.cards.first.id
+          parse_json = JSON(response.body)
+          expect(parse_json["state"]).to be false
+        end
+      end
+
+      describe "PUT review_card with correct translation" do
+        it "check translation" do
+          put :review_card, user_translation: "Дом", card_id: user.cards.first.id
+          parse_json = JSON(response.body)
+          expect(parse_json["state"]).to be true
         end
       end
     end

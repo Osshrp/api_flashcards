@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :card do
-    original_text "дом"
-    translated_text "house"
+    original_text "house"
+    translated_text "дом"
     review_date (-1).days.from_now
     user
     block
