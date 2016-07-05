@@ -27,8 +27,8 @@ module ApiFlashcards
       if user
         @current_user = user
       else
-        # request_http_basic_authentication
-        render json: { message: 'Authentication failed'}, status: :unauthorized
+        request_http_basic_authentication
+        # render json: { message: 'Authentication failed'}, status: 401
       end
     end
   end

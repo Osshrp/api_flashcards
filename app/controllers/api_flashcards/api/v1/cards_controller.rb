@@ -2,6 +2,10 @@ module ApiFlashcards
   module Api
     module V1
       class CardsController < ApiFlashcards::ApplicationController
+        # Handles a GET request
+        # @param /api/v1/cards
+        # @return [JSON] Users cards
+
         def index
           @cards = @current_user.cards.all
           if @cards
@@ -9,6 +13,9 @@ module ApiFlashcards
           end
         end
 
+        # Handles a POST request, create Card
+        # @param {"original_text"=>"Text", "translated_text"=>"Текст"}
+        # @return [success] or status 500
         def create
           @card = @current_user.cards.build(card_params)
           if @card.save
