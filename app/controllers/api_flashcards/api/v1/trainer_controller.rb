@@ -6,7 +6,7 @@ module ApiFlashcards
         # Handles a GET request /api/v1/trainer, show card for review
         # @return [json] card for review
         def index
-          find_card params[:id]
+          FindCard.find params[:id], @current_user
           if @card
             render json: @card, status: 200
           end

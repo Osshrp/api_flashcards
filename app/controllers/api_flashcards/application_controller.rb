@@ -6,18 +6,6 @@ module ApiFlashcards
     include ActionController::MimeResponds
     before_action :authenticate
 
-    def find_card(id)
-      if id
-        @card = @current_user.cards.find id
-      elsif @current_user.current_block
-        @card = @current_user.current_block.cards.pending.first
-        @card ||= @current_user.current_block.cards.repeating.first
-      else
-        @card = @current_user.cards.pending.first
-        @card ||= @current_user.cards.repeating.first
-      end
-    end
-
     private
 
     def authenticate
