@@ -11,13 +11,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160626083502) do
+ActiveRecord::Schema.define(version: 20160705051721) do
+
+  create_table "blocks", force: :cascade do |t|
+    t.string   "title"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "cards", force: :cascade do |t|
+    t.text     "original_text"
+    t.text     "translated_text"
+    t.datetime "review_date"
+    t.integer  "user_id"
+    t.integer  "block_id"
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+    t.integer  "quality",         default: 5,   null: false
+    t.integer  "interval",        default: 1,   null: false
+    t.integer  "repeat",          default: 1,   null: false
+    t.integer  "attempt",         default: 1,   null: false
+    t.float    "efactor",         default: 2.5, null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email"
     t.string   "password"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.integer  "current_block"
   end
 
 end

@@ -1,15 +1,34 @@
+require "rails-api/action_controller/api"
+
 module ApiFlashcards
-  class ApplicationController < ActionController::Base
-    protect_from_forgery with: :exception
+  class ApplicationController < ActionController::API
+    include ActionController::HttpAuthentication::Basic::ControllerMethods
+    include ActionController::MimeResponds
     before_action :authenticate
+
+    def find_card(id)
+      @card = if id
+        @current_user.cards.find id
+      elsif @current_user.current_block
+        @current_user.current_block.cards.pending.first
+        @card ||= @current_user.current_block.cards.repeating.first
+      else
+        @current_user.cards.pending.first
+        @card ||= @current_user.cards.repeating.first
+      end
+    end
 
     private
 
     def authenticate
-      if user = authenticate_with_http_basic { |user, password| User.login(user, password) }
+      user = authenticate_with_http_basic do |user, password|
+        User.authenticate(user, password)
+      end
+      if user
         @current_user = user
       else
         request_http_basic_authentication
+        # render json: { message: 'Authentication failed'}, status: 401
       end
     end
   end

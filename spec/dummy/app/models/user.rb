@@ -1,10 +1,10 @@
 class User < ActiveRecord::Base
-  def self.login (email, password)
+  has_many :cards, dependent: :destroy
+  has_many :blocks, dependent: :destroy
+  validates :email, uniqueness: true
+
+  def self.authenticate (email, password)
     user = where(email: email).first
-    if user && user.password == password
-      user
-    else
-      nil
-    end
+    (user && user.password == password) ? user : nil
   end
 end
