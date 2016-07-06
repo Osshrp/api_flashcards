@@ -1,10 +1,9 @@
 ApiFlashcards::Engine.routes.draw do
   scope module: 'api' do
     namespace 'v1' do
-      get 'cards', to: 'cards#index'
-      post 'cards', to: 'cards#create'
-      put "review" => "trainer#review_card"
+      resources :cards, only: [:index, :create]
       get "train" => "trainer#index"
+      put "review" => "trainer#review_card"
     end
   end
 end

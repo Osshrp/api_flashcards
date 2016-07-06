@@ -1,6 +1,0 @@
-app/models/user.rb 6b8771c13e5c17af6d6b46e77db6a441c5a46b4d
-app/models/card.rb 89d3a9a1e383097b0543acc9a772f952a348059d
-app/models/block.rb 90e253a2ebc087980af163cec2bcc9efa32ffed6
-app/services/super_memo.rb 2852094835f8940d1f08eb9561be9dc5d04ce652
-app/helpers/application_helper.rb eef3d3adce96afe8b14c19b6135323f47543d979
-app/controllers/application_controller.rb 7afa8bd02d2c49fd8df3c6e372b8520c9f916e8e

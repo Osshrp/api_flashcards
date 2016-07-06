@@ -8,3 +8,5 @@ spec/dummy/tmp/
 spec/dummy/.sass-cache
 spec/dummy/.byebug_history
 .byebug_history
+doc/
+.yardoc/
